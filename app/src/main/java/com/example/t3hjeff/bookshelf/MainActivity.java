@@ -1,6 +1,7 @@
 package com.example.t3hjeff.bookshelf;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
+        if (firebaseAuth.getCurrentUser() != null){
+            //თუ მომხმარებელი ავტორიზირებულია, პირდაპირ ჰოუმპეიჯზე ვუშვებთ
+        }
         progressDialog = new ProgressDialog(this);
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
@@ -45,8 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //იუზერის რეგისტრაცია
-    private void registerUser() {
+
+    //იუზერის ავტორიზაცია
+    private void userAuth() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
@@ -62,23 +66,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //მხოლოდ ერთხელ ეშვება
             return;
         }
-        //თუ ვალიდაცია გაიარა, პროგრესბარი, რეგისტრაცია
-        progressDialog.setMessage("მიმდინარეობს რეგისტრაცია..");
+        //თუ ვალიდაცია გაიარა, პროგრესბარი, ავტორიზაცია
+        progressDialog.setMessage("მიმდინარეობს მონაცემების დამუშავება...");
         progressDialog.show();
 
         //ფაირბეიზის რეგისტრაციის მეთოდი
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    //მომხმარებელმა წარმატებით გაიარა რეგისტრაცია და ავტორიზაცია და მისამართდება პროფილზე
-                    Toast.makeText(MainActivity.this,"შეიყვანეთ პაროლი",Toast.LENGTH_SHORT).show();
+        firebaseAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
 
-                }else{
-
-                }
-            }
-        });
+                        if (task.isSuccessful()){
+                            finish();
+                            //ვმისამართდებით პროფილის დასრულების ფეიჯზე, სადაც იუზერი ატვირთავს სურათს და შეიყვანს დეტალურ ინფორმაციას
+                            startActivity(new Intent(MainActivity.this,ProfileCompleteActivity.class));
+                        }
+                    }
+                });
     }
 
 
@@ -86,10 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == buttonRegister) {
-            registerUser();
+            startActivity(new Intent(MainActivity.this,RegisterActivity.class));
         }
         if (v == buttonLogin) {
-            //ავტორიზაციის ფორმაზე უნდა გადავიდეს
+            userAuth();
         }
     }
 }

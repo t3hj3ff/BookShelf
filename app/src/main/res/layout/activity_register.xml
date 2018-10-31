@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+
+
+    <RelativeLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="370dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></RelativeLayout>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20px"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="176dp"
+        android:backgroundTint="#a41b47"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:hint="ელ-ფოსტა"
+        android:inputType="textEmailAddress"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20px"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="220dp"
+        android:backgroundTint="#a41b47"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:hint="პაროლი"
+        android:inputType="textPassword"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20px"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="264dp"
+        android:backgroundTint="#a41b47"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:hint="სახელი"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextAddress"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20px"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="308dp"
+        android:backgroundTint="#a41b47"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:hint="მისამართი"
+        android:inputType="text"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20px"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="352dp"
+        android:backgroundTint="#a41b47"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:hint="ტელეფონი"
+        android:inputType="text"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="InvalidId,MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="356dp"
+        android:layout_height="77dp"
+        android:layout_marginHorizontal="150px"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="1dp"
+        android:backgroundTint="#29cfc5"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:text="რეგისტრაცია"
+        android:textAllCaps="false"
+        android:textColor="#631934"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="176dp"
+        tools:srcCompat="@tools:sample/avatars"
+        tools:ignore="MissingConstraints" />
+
+</android.support.constraint.ConstraintLayout>
