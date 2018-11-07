@@ -72,6 +72,8 @@ public class ProfileCompleteActivity extends AppCompatActivity implements View.O
     public void onClick(View v) {
         if(v == buttonCompleteProfile) {
             completeProfile();
+            finish();
+            startActivity(new Intent(ProfileCompleteActivity.this,HomePageActivity.class));
         }
     }
 }
