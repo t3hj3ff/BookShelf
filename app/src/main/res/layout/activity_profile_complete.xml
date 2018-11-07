@@ -21,61 +21,69 @@
 
     <EditText
         android:id="@+id/editTextName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="223dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="181dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="181dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="სახელი/გვარი"
         android:fontFamily="@font/bpg_banner_caps"
+        android:hint="სახელი/გვარი"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextBDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUserEmail" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="223dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="13dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="მისამართი"
         android:fontFamily="@font/bpg_banner_caps"
+        android:hint="მისამართი"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonUploadProfilePic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonUploadProfilePic"
-        app:layout_constraintStart_toStartOf="@+id/editTextName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="223dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="ტელეფონი"
         android:fontFamily="@font/bpg_banner_caps"
-        app:layout_constraintBottom_toTopOf="@+id/editTextBDate"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:hint="ტელეფონი"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonUploadProfilePic"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
 
     <EditText
         android:id="@+id/editTextBDate"
-        android:layout_width="wrap_content"
+        android:layout_width="222dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="დაბ. თარიღი"
         android:fontFamily="@font/bpg_banner_caps"
+        android:hint="დაბ. თარიღი"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/buttonCompleteProfile"
-        app:layout_constraintStart_toStartOf="@+id/editTextPhone" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUploadProfilePic" />
 
     <Button
         android:id="@+id/buttonCompleteProfile"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="5dp"
@@ -88,19 +96,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextBDate" />
 
     <TextView
         android:id="@+id/textViewUserEmail"
-        android:layout_width="0dp"
+        android:layout_width="222dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
+        android:layout_marginTop="152dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/bpg_banner_caps"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/editTextName"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,28 +117,29 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="152dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCompleteProfile"
-        app:layout_constraintEnd_toStartOf="@+id/textViewUserEmail"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextAddress"
+        app:layout_constraintEnd_toStartOf="@+id/editTextAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserEmail"
         tools:srcCompat="@tools:sample/avatars[0]" />
 
     <Button
         android:id="@+id/buttonUploadProfilePic"
-        android:layout_width="83dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#29cfc5"
         android:fontFamily="@font/bpg_banner_caps"
-        android:text="არჩევა"
+        android:text="სურათის არჩევა"
         android:textAllCaps="false"
         android:textColor="#631934"
+        app:layout_constraintBottom_toTopOf="@+id/editTextBDate"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPhone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
 
 
 </android.support.constraint.ConstraintLayout>
