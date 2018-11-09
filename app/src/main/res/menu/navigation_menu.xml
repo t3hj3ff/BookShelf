@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:icon="@drawable/home"
+        android:title="მთავარი" />
+    <item
+        android:id="@+id/nav_booklist"
+        android:title="წიგნების სია"
+        android:icon="@drawable/booklist"
+
+        />
+    <item
+        android:id="@+id/nav_topbooks"
+        android:title="საუკეთესო"
+        android:icon="@drawable/bestbooks"
+        />
+    <item
+        android:id="@+id/nav_parameters"
+        android:title="პარამეტრები"
+        android:icon="@drawable/parameters"
+        />
+    <item
+        android:id="@+id/nav_profile"
+        android:title="პროფილი"
+        android:icon="@drawable/profile"
+        />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="გამოსვლა"
+        android:icon="@drawable/logout"
+        />
+</menu>
