@@ -1,5 +1,6 @@
 package com.example.t3hjeff.bookshelf;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -74,7 +75,7 @@ public class HomePageActivity extends AppCompatActivity {
                 //პარამეტრები აპლიკაციის (ვერსია და ყლეობები);
                 break;
             case R.id.nav_profile:
-                //პროფილის ფეიჯი, ავტორის მიერ დამატებული წიგნები, და წიგნის დამატების ღილაკი;
+                startActivity(new Intent(HomePageActivity.this,ProfileActivity.class));
                 break;
             case R.id.nav_logout:
                 //ლოგ-აუთი;

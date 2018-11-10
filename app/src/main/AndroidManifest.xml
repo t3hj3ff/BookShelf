@@ -25,7 +25,9 @@
 
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ProfileCompleteActivity" />
-        <activity android:name=".HomePageActivity"></activity>
+        <activity android:name=".HomePageActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".AddBookActivity"></activity>
     </application>
 
 </manifest>
