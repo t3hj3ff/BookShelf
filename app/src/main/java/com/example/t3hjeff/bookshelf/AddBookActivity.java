@@ -66,7 +66,7 @@ public class AddBookActivity extends AppCompatActivity {
         userRef = FirebaseDatabase.getInstance().getReference();
         bookRef = FirebaseDatabase.getInstance().getReference().child("Books");
 
-        selectBookImage = (ImageButton) findViewById(R.id.imageButton);
+        selectBookImage = (ImageButton) findViewById(R.id.addimageButton);
         addBookButton = (Button) findViewById(R.id.buttonAddBook);
         bookTitle = (EditText) findViewById(R.id.addbookTitle);
         bookDescription = (EditText) findViewById(R.id.addbookDescription);
@@ -96,7 +96,9 @@ public class AddBookActivity extends AppCompatActivity {
     }
 
     private void ValidateBookInfo() {
-
+        Author = bookAuthor.getText().toString();
+        Description = bookDescription.getText().toString();
+        Title = bookTitle.getText().toString();
         if (ImageUrl == null){
             Toast.makeText(this,"წიგნის სურათი არ შეიძლება იყოს ცარიელი",Toast.LENGTH_SHORT).show();
         }
@@ -153,19 +155,23 @@ public class AddBookActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    String userName = dataSnapshot.child("name").getValue().toString();
                     Integer BookLikes = 0;
+                    String userFullName = dataSnapshot.child("name").getValue().toString();
 
+
+                    Title = bookTitle.getText().toString();
+                    Description = bookDescription.getText().toString();
+                    Author = bookTitle.getText().toString();
                     HashMap booksMap = new HashMap();
                     booksMap.put("uid",current_user_id);
                     booksMap.put("date",saveCurrentDate);
                     booksMap.put("time",saveCurrentTime);
-                    booksMap.put("title",bookTitle);
-                    booksMap.put("description",bookDescription);
-                    booksMap.put("author",bookAuthor);
+                    booksMap.put("title",Title);
+                    booksMap.put("description",Description);
+                    booksMap.put("author",Author);
                     booksMap.put("booksimage",DownloadURL);
                     booksMap.put("likes",BookLikes);
-                    booksMap.put("userfullname",userName);
+                    booksMap.put("authorname",userFullName);
 
                     bookRef.child(current_user_id + bookRandomName).updateChildren(booksMap)
                             .addOnCompleteListener(new OnCompleteListener() {

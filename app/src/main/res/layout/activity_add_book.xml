@@ -13,7 +13,7 @@
     </include>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addimageButton"
         android:layout_width="474dp"
         android:layout_height="259dp"
         android:layout_below="@+id/add_book_toolbar"
