@@ -157,6 +157,8 @@ public class AddBookActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     Integer BookLikes = 0;
                     String userFullName = dataSnapshot.child("name").getValue().toString();
+                    String userAddress = dataSnapshot.child("address").getValue().toString();
+                    String userPhone = dataSnapshot.child("phone").getValue().toString();
 
 
                     Title = bookTitle.getText().toString();
@@ -172,6 +174,8 @@ public class AddBookActivity extends AppCompatActivity {
                     booksMap.put("booksimage",DownloadURL);
                     booksMap.put("likes",BookLikes);
                     booksMap.put("authorname",userFullName);
+                    booksMap.put("authoraddress",userAddress);
+                    booksMap.put("authorphone",userPhone);
 
                     bookRef.child(current_user_id + bookRandomName).updateChildren(booksMap)
                             .addOnCompleteListener(new OnCompleteListener() {

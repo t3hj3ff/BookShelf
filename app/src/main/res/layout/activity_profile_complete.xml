@@ -35,14 +35,13 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <EditText
         android:id="@+id/editTextAddress"
         android:layout_width="223dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="13dp"
         android:ems="10"
         android:fontFamily="@font/bpg_banner_caps"
         android:hint="მისამართი"
@@ -56,15 +55,17 @@
         android:id="@+id/editTextPhone"
         android:layout_width="223dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:fontFamily="@font/bpg_banner_caps"
         android:hint="ტელეფონი"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editTextBDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonUploadProfilePic"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress"
+        app:layout_constraintVertical_bias="0.325" />
 
     <EditText
         android:id="@+id/editTextBDate"

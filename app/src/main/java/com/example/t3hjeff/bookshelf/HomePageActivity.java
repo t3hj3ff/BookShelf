@@ -66,7 +66,7 @@ public class HomePageActivity extends AppCompatActivity {
                 //გადადის მთავარ გვერდზე;
                 break;
             case R.id.nav_booklist:
-                //გადადის წიგნების სიაზე (ლისტად უნდა იყოს ჩამოყრილი ახლიდან>ძველი);
+                startActivity(new Intent(HomePageActivity.this,AllBooksActivity.class));
                 break;
             case R.id.nav_topbooks:
                 //წიგნები რეიტინგის მიხედვით;

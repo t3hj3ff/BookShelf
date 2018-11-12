@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary">
+
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/book_image"
+                    android:layout_width="60dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginLeft="4dp"
+                    android:src="@drawable/profile" />
+
+                <LinearLayout
+                    android:layout_width="190dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/book_name"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="წიგნის ავტორი"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/bpg_banner_caps"
+                        android:textColor="#29cfc5"
+                        android:textSize="36px"
+                        />
+                    <TextView
+                        android:id="@+id/book_author"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="წიგნის ავტორი"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="6dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/bpg_banner_caps"
+                        android:textColor="#29cfc5"
+                        android:textSize="26px"
+                        />
+                    <TextView
+                        android:id="@+id/book_owner"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="წიგნის ავტორი"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="1dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/bpg_banner_caps"
+                        android:textColor="#29cfc5"
+                        android:textSize="26px"
+                        />
+                    <TextView
+                        android:id="@+id/book_owner_address"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="წიგნის ავტორი"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="1dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/bpg_banner_caps"
+                        android:textColor="#29cfc5"
+                        android:textSize="26px"
+                        />
+
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <Button
+                    android:id="@+id/share_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/sharebutton"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
