@@ -3,6 +3,7 @@ package com.example.t3hjeff.bookshelf;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ public class ProfileCompleteActivity extends AppCompatActivity implements View.O
         }
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextAddress = (EditText) findViewById(R.id.editTextAddress);
         editTextPhone = (EditText) findViewById(R.id.editTextPhone);
@@ -52,13 +53,40 @@ public class ProfileCompleteActivity extends AppCompatActivity implements View.O
         buttonCompleteProfile.setOnClickListener(this);
     }
 
-    private void completeProfile() {
+    private void ValidateProfile() {
         String name = editTextName.getText().toString().trim();
         String address = editTextAddress.getText().toString().trim();
         String phone = editTextPhone.getText().toString().trim();
         String bdate = editTextBDate.getText().toString().trim();
 
-        UserProfileInfo userProfileInfo = new UserProfileInfo(name,address,phone,bdate);
+        if (TextUtils.isEmpty(name)){
+            Toast.makeText(this,"გთხოვთ შეიყვანოთ თქვენი სახელი",Toast.LENGTH_SHORT).show();
+        }
+        if (TextUtils.isEmpty(address)){
+            Toast.makeText(this,"გთხოვთ შეიყვანოთ თქვენი ადგილმდებარეობა",Toast.LENGTH_SHORT).show();
+        }
+        if (TextUtils.isEmpty(phone)){
+            Toast.makeText(this,"გთხოვთ შეიყვანოთ თქვენი ტელეფონის ნომერი",Toast.LENGTH_SHORT).show();
+        }
+        if (TextUtils.isEmpty(bdate)){
+            Toast.makeText(this,"გთხოვთ შეიყვანოთ თქვენი დაბადების თარიღი",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            completeProfile();
+        }
+    }
+
+    private void completeProfile() {
+        String name = editTextName.getText().toString().trim();
+        String address = editTextAddress.getText().toString().trim();
+        String phone = editTextPhone.getText().toString().trim();
+        String bdate = editTextBDate.getText().toString().trim();
+        String email = firebaseAuth.getCurrentUser().getEmail();
+        int sharecount = 0;
+        int userrating = 0;
+
+
+        UserProfileInfo userProfileInfo = new UserProfileInfo(name,address,phone,bdate,sharecount,userrating,email);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
@@ -66,14 +94,14 @@ public class ProfileCompleteActivity extends AppCompatActivity implements View.O
 
         Toast.makeText(this,"თქვენი მონაცემები წარმატებით შეინახა", Toast.LENGTH_LONG).show();
 
+        startActivity(new Intent(ProfileCompleteActivity.this,HomePageActivity.class));
+
     }
 
     @Override
     public void onClick(View v) {
         if(v == buttonCompleteProfile) {
-            completeProfile();
-            finish();
-            startActivity(new Intent(ProfileCompleteActivity.this,HomePageActivity.class));
+            ValidateProfile();
         }
     }
 }

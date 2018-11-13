@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonLogin;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private DatabaseReference userRef;
+    private String current_user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        current_user_id = firebaseAuth.getUid();
+        userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(current_user_id);
         if (firebaseAuth.getCurrentUser() != null){
             //თუ მომხმარებელი ავტორიზირებულია, პირდაპირ ჰოუმპეიჯზე ვუშვებთ
         }
@@ -80,7 +86,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()){
                             finish();
                             //ვმისამართდებით პროფილის დასრულების ფეიჯზე, სადაც იუზერი ატვირთავს სურათს და შეიყვანს დეტალურ ინფორმაციას
-                            startActivity(new Intent(MainActivity.this,ProfileCompleteActivity.class));
+                            if (userRef == null) {
+                                startActivity(new Intent(MainActivity.this,ProfileCompleteActivity.class));
+                            }else {
+                                startActivity(new Intent(MainActivity.this,HomePageActivity.class));
+                            }
+
                         }
                     }
                 });

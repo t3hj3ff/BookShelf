@@ -28,7 +28,8 @@
         <activity android:name=".HomePageActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AddBookActivity" />
-        <activity android:name=".AllBooksActivity"></activity>
+        <activity android:name=".AllBooksActivity" />
+        <activity android:name=".TopBooksActivity"></activity>
     </application>
 
 </manifest>

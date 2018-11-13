@@ -47,6 +47,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
         Books books = arrayList.get(i);
 
         myAdapterViewHolder.t1.setText(books.getTitle());
+        myAdapterViewHolder.t2.setText(books.getAuthor());
+        myAdapterViewHolder.t3.setText(books.getAuthorname());
+        myAdapterViewHolder.t4.setText(books.getAuthoraddress());
         Picasso.get().load(books.getBooksimage()).into(myAdapterViewHolder.i1);
 
     }
@@ -54,10 +57,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
     public class MyAdapterViewHolder extends RecyclerView.ViewHolder{
 
         public TextView t1;
+        public TextView t2;
+        public TextView t3;
+        public TextView t4;
         public ImageView i1;
         public MyAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             t1 = (TextView)itemView.findViewById(R.id.book_name);
+            t2 = (TextView)itemView.findViewById(R.id.book_author);
+            t3 = (TextView)itemView.findViewById(R.id.book_owner);
+            t4 = (TextView)itemView.findViewById(R.id.book_owner_address);
             i1 = (ImageView)itemView.findViewById(R.id.book_image);
         }
     }
