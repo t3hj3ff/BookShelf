@@ -12,17 +12,80 @@
         layout="@layout/app_bar_layout">
     </include>
 
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/all_books_view"
+            android:layout_width="match_parent"
+            android:layout_height="204dp"
+            android:layout_alignStart="@+id/main_container"
+            android:orientation="horizontal" />
+    </FrameLayout>
+
     <Button
         android:id="@+id/buttonAddnewpost"
         android:layout_width="wrap_content"
         android:layout_height="77dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="14dp"
         android:backgroundTint="#29cfc5"
         android:fontFamily="@font/bpg_banner_caps"
         android:text="წიგნის დამატება"
         android:textAllCaps="false"
         android:textColor="#631934"
         android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="130dp"
+        android:layout_height="33dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-72dp"
+        android:layout_marginBottom="311dp"
+        android:layout_toStartOf="@+id/buttonAddnewpost"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:text="ჩემი წიგნები"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="126dp"
+        android:layout_height="69dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="231dp"
+        android:layout_marginEnd="-65dp"
+        android:layout_toStartOf="@+id/buttonAddnewpost"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="231dp"
+        android:layout_marginTop="226dp"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:text="TextView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="89dp"
+        android:fontFamily="@font/bpg_banner_caps"
+        android:text="TextView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 </RelativeLayout>
