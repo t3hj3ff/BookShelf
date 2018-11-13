@@ -19,8 +19,11 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private RecyclerView bookList;
     private DatabaseReference BooksRef;
     private DatabaseReference UsersRef;
+    private TextView current_user_name,current_user_age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,22 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         BooksRef = FirebaseDatabase.getInstance().getReference().child("Books");
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+
+        UsersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ReturnUsers returnUsers = dataSnapshot.getValue(ReturnUsers.class);
+                current_user_name = (TextView) findViewById(R.id.textViewName);
+                current_user_name.setText(returnUsers.getName());
+                current_user_age = (TextView) findViewById(R.id.textViewAge);
+                current_user_age.setText(returnUsers.getBdate());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

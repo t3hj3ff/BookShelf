@@ -19,8 +19,11 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -36,7 +39,10 @@ public class HomePageActivity extends AppCompatActivity {
     //ექშენბარის ტუგლი
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private RecyclerView bookList;
+    private RecyclerView userList;
     private DatabaseReference BooksRef;
+    private DatabaseReference UsersRef;
+    private TextView total_users_num,total_books_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +67,48 @@ public class HomePageActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         bookList.setLayoutManager(linearLayoutManager);
 
+        userList = (RecyclerView) findViewById(R.id.all_users_view);
+        userList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this);
+        linearLayoutManager1.setReverseLayout(true);
+        linearLayoutManager1.setStackFromEnd(true);
+        userList.setLayoutManager(linearLayoutManager1);
+
 
 
 
 
         BooksRef = FirebaseDatabase.getInstance().getReference().child("Books");
+        UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        UsersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long num = dataSnapshot.getChildrenCount();
+                total_users_num = (TextView) findViewById(R.id.total_users);
+                total_users_num.setText(String.valueOf(num));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        BooksRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long num = dataSnapshot.getChildrenCount();
+                total_books_num = (TextView) findViewById(R.id.total_books);
+                total_books_num.setText(String.valueOf(num));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -77,6 +120,9 @@ public class HomePageActivity extends AppCompatActivity {
         });
     }
 
+
+
+    //წიგნების რესაიკლერის ონსტარტი
     @Override
     protected void onStart() {
         super.onStart();
@@ -85,6 +131,29 @@ public class HomePageActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<Books>()
                         .setQuery(BooksRef.orderByChild("likes"), Books.class)
                         .build();
+
+        FirebaseRecyclerOptions<Users> options1 =
+                new FirebaseRecyclerOptions.Builder<Users>()
+                        .setQuery(UsersRef.orderByChild("userrating"), Users.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<Users, HomePageActivity.UsersViewHolder> firebaseRecyclerAdapter1 =
+                new FirebaseRecyclerAdapter<Users, HomePageActivity.UsersViewHolder>(options1) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull HomePageActivity.UsersViewHolder holder, int position, @NonNull Users model1) {
+                        holder.user_name.setText(model1.getName());
+                        holder.user_sharecount.setText(String.valueOf(model1.getSharecount()));
+                        holder.user_age.setText(model1.getBdate());
+                    }
+
+                    @NonNull
+                    @Override
+                    public HomePageActivity.UsersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.all_users_display,viewGroup,false);
+                        HomePageActivity.UsersViewHolder viewHolder = new HomePageActivity.UsersViewHolder(view);
+                        return viewHolder;
+                    }
+                };
 
         FirebaseRecyclerAdapter<Books, HomePageActivity.BooksViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Books, HomePageActivity.BooksViewHolder>(options) {
@@ -106,6 +175,8 @@ public class HomePageActivity extends AppCompatActivity {
                     }
                 };
 
+        userList.setAdapter((firebaseRecyclerAdapter1));
+        firebaseRecyclerAdapter1.startListening();
         bookList.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
     }
@@ -122,6 +193,18 @@ public class HomePageActivity extends AppCompatActivity {
             book_owner = itemView.findViewById(R.id.book_owner);
             book_owner_address = itemView.findViewById(R.id.book_owner_address);
             book_image = itemView.findViewById(R.id.book_image);
+        }
+    }
+
+    public static class UsersViewHolder extends RecyclerView.ViewHolder{
+
+        TextView user_name,user_age,user_sharecount;
+
+        public UsersViewHolder(@NonNull View itemView) {
+            super(itemView);
+            user_name = itemView.findViewById(R.id.user_name);
+            user_age = itemView.findViewById(R.id.user_age);
+            user_sharecount = itemView.findViewById(R.id.user_sharecount);
         }
     }
 
@@ -143,7 +226,7 @@ public class HomePageActivity extends AppCompatActivity {
                 startActivity(new Intent(HomePageActivity.this,AllBooksActivity.class));
                 break;
             case R.id.nav_topbooks:
-                startActivity(new Intent(HomePageActivity.this,HomePageActivity.class));
+                startActivity(new Intent(HomePageActivity.this,TopBooksActivity.class));
                 break;
             case R.id.nav_parameters:
                 //პარამეტრები აპლიკაციის (ვერსია და ყლეობები);
