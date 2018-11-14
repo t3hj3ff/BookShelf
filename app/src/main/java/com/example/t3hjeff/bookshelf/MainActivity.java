@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         firebaseAuth = FirebaseAuth.getInstance();
         current_user_id = firebaseAuth.getUid();
-        userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(current_user_id);
+
         if (firebaseAuth.getCurrentUser() != null){
             //თუ მომხმარებელი ავტორიზირებულია, პირდაპირ ჰოუმპეიჯზე ვუშვებთ
         }
@@ -82,8 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
-
+                        userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(current_user_id);
                         if (task.isSuccessful()){
+
                             finish();
                             //ვმისამართდებით პროფილის დასრულების ფეიჯზე, სადაც იუზერი ატვირთავს სურათს და შეიყვანს დეტალურ ინფორმაციას
                             if (userRef == null) {

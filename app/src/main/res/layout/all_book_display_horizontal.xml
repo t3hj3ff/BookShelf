@@ -7,7 +7,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="185dp"
-        android:layout_height="244dp"
+        android:layout_height="204dp"
         android:layout_centerInParent="true">
 
 
@@ -17,55 +17,56 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_width="110dp"
-            android:layout_height="105dp"
-            android:scaleType="centerCrop"
-            android:layout_centerHorizontal="true"
             android:id="@+id/book_image"
-            android:src="@drawable/common_google_signin_btn_icon_dark"/>
+            android:layout_width="90dp"
+            android:layout_height="65dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/common_google_signin_btn_icon_dark" />
 
         <TextView
+            android:id="@+id/book_name"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:text="წიგნის სათაური"
             android:layout_below="@+id/book_image"
-            android:textColor="#29cfc5"
             android:fontFamily="@font/bpg_banner_caps"
-            android:textSize="58px"
             android:paddingLeft="5dp"
-            android:id="@+id/book_name"/>
+            android:text="წიგნის სათაური"
+            android:textColor="#29cfc5"
+            android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/book_author"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="წიგნის ავტორი"
             android:layout_below="@+id/book_name"
-            android:textColor="#29cfc5"
             android:fontFamily="@font/bpg_banner_caps"
-            android:textSize="48px"
             android:paddingLeft="5dp"
-            android:id="@+id/book_author"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="წიგნი ეკუთვნის"
-            android:layout_below="@+id/book_author"
+            android:text="წიგნის ავტორი"
             android:textColor="#29cfc5"
-            android:fontFamily="@font/bpg_banner_caps"
-            android:textSize="48px"
-            android:paddingLeft="5dp"
-            android:id="@+id/book_owner"/>
+            android:textSize="10sp" />
 
         <TextView
+            android:id="@+id/book_owner"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="წიგნნი იმყოფება"
-            android:layout_below="@+id/book_owner"
-            android:textColor="#29cfc5"
+            android:layout_below="@+id/book_author"
             android:fontFamily="@font/bpg_banner_caps"
-            android:textSize="48px"
             android:paddingLeft="5dp"
-            android:id="@+id/book_owner_address"/>
+            android:text="წიგნი ეკუთვნის"
+            android:textColor="#29cfc5"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/book_owner_address"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/book_owner"
+            android:fontFamily="@font/bpg_banner_caps"
+            android:paddingLeft="5dp"
+            android:text="წიგნნი იმყოფება"
+            android:textColor="#29cfc5"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/share_button"

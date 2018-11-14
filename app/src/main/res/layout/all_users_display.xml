@@ -5,32 +5,31 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="4dp"
+        android:layout_width="310dp"
+        android:layout_height="80dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp">
-
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:padding="10dp"
+            android:background="@color/colorPrimaryDark"
             android:orientation="horizontal"
-            android:background="@color/colorPrimary">
+            android:padding="10dp">
 
 
             <ImageView
                 android:id="@+id/book_image"
                 android:layout_width="60dp"
-                android:layout_height="90dp"
-                android:scaleType="centerCrop"
+                android:layout_height="70dp"
                 android:layout_marginLeft="4dp"
-                android:src="@drawable/profile" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/common_google_signin_btn_icon_dark" />
 
             <LinearLayout
                 android:layout_width="190dp"
@@ -49,7 +48,7 @@
                     android:text="წიგნის ავტორი"
                     android:textAlignment="textStart"
                     android:textColor="#29cfc5"
-                    android:textSize="14sp" />
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/user_sharecount"
@@ -61,19 +60,19 @@
                     android:text="წიგნის ავტორი"
                     android:textAlignment="textStart"
                     android:textColor="#29cfc5"
-                    android:textSize="14sp" />
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/user_age"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/bpg_banner_caps"
                     android:text="წიგნის ავტორი"
                     android:textAlignment="textStart"
                     android:textColor="#29cfc5"
-                    android:textSize="14sp" />
+                    android:textSize="11sp" />
 
 
             </LinearLayout>
