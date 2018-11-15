@@ -1,18 +1,19 @@
 package com.example.t3hjeff.bookshelf;
 
 public class Books {
-    public String title,author,authorname,authoraddress,booksimage;
+    public String title,author,authorname,authoraddress,booksimage,booksid;
 
     public Books(){
 
     }
 
-    public Books(String title, String author, String authorname, String authoraddress, String booksimage) {
+    public Books(String title, String author, String authorname, String authoraddress, String booksimage, String booksid) {
         this.title = title;
         this.author = author;
         this.authorname = authorname;
         this.authoraddress = authoraddress;
         this.booksimage = booksimage;
+        this.booksid = booksid;
     }
 
     public String getTitle() {
@@ -22,6 +23,12 @@ public class Books {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getId() {
+        return booksid;
+    }
+
+    public void SetId() {this.booksid = booksid; }
 
     public String getAuthor() {
         return author;

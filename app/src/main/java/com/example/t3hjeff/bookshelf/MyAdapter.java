@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolder> implements View.OnClickListener{
 
     public Context c;
     public ArrayList<Books> arrayList;
@@ -30,9 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
+    public long getItemId(int position) { return position; }
 
     @NonNull
     @Override
@@ -46,11 +45,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
     public void onBindViewHolder(@NonNull MyAdapterViewHolder myAdapterViewHolder, int i) {
         Books books = arrayList.get(i);
 
+        myAdapterViewHolder.bookId.setId(i);
         myAdapterViewHolder.t1.setText(books.getTitle());
         myAdapterViewHolder.t2.setText(books.getAuthor());
         myAdapterViewHolder.t3.setText(books.getAuthorname());
         myAdapterViewHolder.t4.setText(books.getAuthoraddress());
         Picasso.get().load(books.getBooksimage()).into(myAdapterViewHolder.i1);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        //test
+        view.setBackgroundColor(1);
 
     }
 
@@ -61,6 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
         public TextView t3;
         public TextView t4;
         public ImageView i1;
+        public TextView bookId;
         public MyAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
             t1 = (TextView)itemView.findViewById(R.id.book_name);
@@ -68,6 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
             t3 = (TextView)itemView.findViewById(R.id.book_owner);
             t4 = (TextView)itemView.findViewById(R.id.book_owner_address);
             i1 = (ImageView)itemView.findViewById(R.id.book_image);
+            bookId = (TextView)itemView.findViewById(R.id.bookId);
         }
     }
 }

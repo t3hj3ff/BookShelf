@@ -87,6 +87,12 @@
                     android:textColor="#29cfc5"
                     android:textSize="14sp" />
 
+                <TextView
+                    android:id="@+id/book_Id"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="TextView" />
+
             </LinearLayout>
 
             <LinearLayout

@@ -66,6 +66,8 @@ public class AllBooksActivity extends AppCompatActivity {
 
 
 
+
+
         EditTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -155,6 +157,7 @@ public class AllBooksActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Books, BooksViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull BooksViewHolder holder, int position, @NonNull Books model) {
+                        holder.book_id.setText(model.getId());
                         holder.book_name.setText(model.getTitle());
                         holder.book_author.setText(model.getAuthor());
                         holder.book_owner.setText(model.getAuthorname());
@@ -177,11 +180,12 @@ public class AllBooksActivity extends AppCompatActivity {
 
     public static class BooksViewHolder extends RecyclerView.ViewHolder{
 
-        TextView book_name,book_author,book_owner,book_owner_address;
+        TextView book_name,book_author,book_owner,book_owner_address,book_id;
         ImageView book_image;
 
         public BooksViewHolder(@NonNull View itemView) {
             super(itemView);
+            book_id = itemView.findViewById(R.id.book_Id);
             book_name = itemView.findViewById(R.id.book_name);
             book_author = itemView.findViewById(R.id.book_author);
             book_owner = itemView.findViewById(R.id.book_owner);
