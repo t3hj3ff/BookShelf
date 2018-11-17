@@ -11,11 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,8 +68,6 @@ public class AllBooksActivity extends AppCompatActivity {
 
 
 
-
-
         EditTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -92,7 +92,8 @@ public class AllBooksActivity extends AppCompatActivity {
 
 
 
-        BooksRef = FirebaseDatabase.getInstance().getReference().child("Books");
+
+
 
     }
 
@@ -144,6 +145,7 @@ public class AllBooksActivity extends AppCompatActivity {
         startActivity(mainIntent);
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -193,4 +195,5 @@ public class AllBooksActivity extends AppCompatActivity {
             book_image = itemView.findViewById(R.id.book_image);
         }
     }
+
 }

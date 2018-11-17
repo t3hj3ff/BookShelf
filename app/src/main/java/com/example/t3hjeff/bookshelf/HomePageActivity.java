@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -105,6 +107,28 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+
+        //წიგნის აიდის წამოღების ფუნქცია
+        final Button button = findViewById(R.id.share_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                BooksRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String userId = dataSnapshot.getKey();
+                        String finalUserid = userId.substring(userId.lastIndexOf('-')+1);
+                        Log.i("buttonsays",finalUserid);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

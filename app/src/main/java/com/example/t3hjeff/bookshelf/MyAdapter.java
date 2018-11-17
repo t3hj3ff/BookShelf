@@ -76,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyAdapterViewHolde
             t3 = (TextView)itemView.findViewById(R.id.book_owner);
             t4 = (TextView)itemView.findViewById(R.id.book_owner_address);
             i1 = (ImageView)itemView.findViewById(R.id.book_image);
-            bookId = (TextView)itemView.findViewById(R.id.bookId);
+            //bookId = (TextView)itemView.findViewById(R.id.bookId);
         }
     }
 }
